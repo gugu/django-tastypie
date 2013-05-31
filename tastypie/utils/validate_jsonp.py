@@ -141,16 +141,16 @@ def test():
       >>> is_valid_javascript_identifier('$210')
       True
 
-      >>> is_valid_javascript_identifier(u'Stra\u00dfe')
+      >>> is_valid_javascript_identifier(u'Stra\\u00dfe')
       True
 
-      >>> is_valid_javascript_identifier(r'\u0062') # u'b'
+      >>> is_valid_javascript_identifier(r'\\u0062') # u'b'
       True
 
-      >>> is_valid_javascript_identifier(r'\u62')
+      >>> is_valid_javascript_identifier(r'\\u62')
       False
 
-      >>> is_valid_javascript_identifier(r'\u0020')
+      >>> is_valid_javascript_identifier(r'\\u0020')
       False
 
       >>> is_valid_javascript_identifier('_bar')
