@@ -16,6 +16,7 @@ setup(
     author_email='daniel@toastdriven.com',
     url='http://github.com/toastdriven/django-tastypie/',
     long_description=open('README.rst', 'r').read(),
+    use_2to3 = True,
     packages=[
         'tastypie',
         'tastypie.utils',
