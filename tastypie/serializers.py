@@ -8,7 +8,7 @@ try:
     import json as simplejson
 except ImportError: # < Python 2.6
     from django.utils import simplejson
-from django.utils.encoding import force_unicode
+from django.utils.encoding import force_text
 from tastypie.bundle import Bundle
 from tastypie.exceptions import BadRequest, UnsupportedFormat
 from tastypie.utils import format_datetime, format_date, format_time, make_naive
@@ -248,7 +248,7 @@ class Serializer(object):
         elif data is None:
             return None
         else:
-            return force_unicode(data)
+            return force_text(data)
 
     def to_etree(self, data, options=None, name=None, depth=0):
         """
@@ -305,7 +305,7 @@ class Serializer(object):
                 if isinstance(simple_data, unicode):
                     element.text = simple_data
                 else:
-                    element.text = force_unicode(simple_data)
+                    element.text = force_text(simple_data)
 
         return element
 
