@@ -1351,7 +1351,7 @@ class Resource(object):
             body = request.body
         else:
             body = request.raw_post_data
-        deserialized = self.deserialize(request, body, format=request.META.get('CONTENT_TYPE', 'application/json'))
+        deserialized = self.deserialize(request, body.decode("utf-8"), format=request.META.get('CONTENT_TYPE', 'application/json'))
         deserialized = self.alter_deserialized_detail_data(request, deserialized)
         bundle = self.build_bundle(data=dict_strip_unicode_keys(deserialized), request=request)
         updated_bundle = self.obj_create(bundle, **self.remove_api_resource_names(kwargs))
