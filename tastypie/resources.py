@@ -1652,7 +1652,7 @@ class Resource(object):
             body = request.body
         else:
             body = request.raw_post_data
-        deserialized = self.deserialize(request, body, format=request.META.get('CONTENT_TYPE', 'application/json'))
+        deserialized = self.deserialize(request, body.decode("utf-8"), format=request.META.get('CONTENT_TYPE', 'application/json'))
         self.update_in_place(request, bundle, deserialized)
 
         if not self._meta.always_return_data:
